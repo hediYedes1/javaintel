@@ -1,3 +1,7 @@
+package classpr;
+
+import classes.Zoo;
+import classes.Animal;
 public class Main {
     public static void main(String[] args) {
         Animal lion = new Animal("cats", "lion", 3, true);
@@ -20,8 +24,8 @@ public class Main {
         myZoo.addAnimal(monkey);
 
         System.out.println(myZoo);
-        System.out.println("pos: " + myZoo.searchAnimal(lion.name));
-        System.out.println("pos: " + myZoo.searchAnimal(giraffe.name));
+        System.out.println("pos: " + myZoo.searchAnimal(lion.getName()));
+        System.out.println("pos: " + myZoo.searchAnimal(giraffe.getName()));
 
         myZoo.addAnimal(lion);
         myZoo.addAnimal(lion); // Tentative d'ajout de l'animal en double

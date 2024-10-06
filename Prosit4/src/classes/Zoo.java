@@ -1,10 +1,18 @@
+package classes;
+
 public class Zoo {
+    /*
     public Animal[] animals;
     public String name;
     public String city;
     public final int nbrCages = 25;
     public int nbrAnimals;
-
+*/
+    private Animal[] animals;
+    private String name ;
+    private String city;
+    private final int nbrCages = 25 ;
+    private int nbrAnimals ;
     public Zoo(String name, String city) {
         this.name = name;
         this.city = city;
@@ -28,13 +36,22 @@ public class Zoo {
 
     public int searchAnimal(String animalName) {
         for (int i = 0; i < this.nbrAnimals; i++) {
-            if (this.animals[i].name.equals(animalName)) {
+            if (this.animals[i].getName().equals(animalName)) {
                 return i;
             }
         }
         return -1;
     }
-
+    public String SetName(String name) {
+        if(this.name == null) {
+            System.out.println("Name is null");
+        }
+        else {
+            this.name = name;
+        }
+        return name;
+    }
+/*
     public boolean addAnimal(Animal animal) {
         if (this.nbrAnimals >= this.nbrCages) {
             System.out.println("No more additions allowed!");
@@ -50,8 +67,23 @@ public class Zoo {
         }
     }
 
+*/
+public boolean addAnimal(Animal animal) {
+    if (this.isZooFull()==true) {
+        System.out.println("No more additions allowed!");
+        return false;
+    } else if (this.searchAnimal(animal.getName()) != -1 && this.isZooFull()==false) {
+        System.out.println("Animal already exists!");
+        return false;
+    } else {
+        this.animals[this.nbrAnimals] = animal;
+        this.nbrAnimals++;
+        System.out.println("Animal added");
+        return true;
+    }
+}
     public boolean removeAnimal(Animal animal) {
-        int index = this.searchAnimal(animal.name);
+        int index = this.searchAnimal(animal.getName());
         if (index == -1) {
             System.out.println("Animal not found!");
             return false;
