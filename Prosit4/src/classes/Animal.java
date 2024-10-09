@@ -20,14 +20,15 @@ public class Animal {
     public String getName() {
         return name;
     }
-    public int SetAge(int age) {
+
+    public void SetAge(int age) {
         if(age < 0) {
-            return -1 ;
+            System.out.println("Invalid age provided. Age cannot be negative.");
         }
         else {
             this.age = age;
         }
-        return age ;
+
     }
 
     public String toString() {

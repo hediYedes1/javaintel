@@ -42,14 +42,14 @@ public class Zoo {
         }
         return -1;
     }
-    public String SetName(String name) {
-        if(this.name == null) {
+    public void SetName(String name) {
+        if(this.name == null || this.name.isEmpty()) {
             System.out.println("Name is null");
         }
         else {
             this.name = name;
         }
-        return name;
+
     }
 /*
     public boolean addAnimal(Animal animal) {
@@ -69,10 +69,10 @@ public class Zoo {
 
 */
 public boolean addAnimal(Animal animal) {
-    if (this.isZooFull()==true) {
+    if (this.isZooFull()) {
         System.out.println("No more additions allowed!");
         return false;
-    } else if (this.searchAnimal(animal.getName()) != -1 && this.isZooFull()==false) {
+    } else if (this.searchAnimal(animal.getName()) != -1) {
         System.out.println("Animal already exists!");
         return false;
     } else {
