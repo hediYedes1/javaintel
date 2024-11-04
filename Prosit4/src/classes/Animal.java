@@ -9,14 +9,28 @@ public class Animal {
 */
     private String family;
     private String name;
+
+    public int getAge() {
+        return age;
+    }
+
     private int age;
     private boolean isMammal ;
-    public Animal(String family, String name, int age, boolean isMammal) {
+
+    public Animal(String family, String name, int age, boolean isMammal) throws exep{
         this.family = family;
         this.name = name;
-        this.age = age;
         this.isMammal = isMammal;
+        if (age < 0)
+        {
+            throw new exep("invalid age");
+        }
+        this.age = age;
+
     }
+
+
+
     public String getName() {
         return name;
     }
@@ -31,6 +45,8 @@ public class Animal {
 
     }
 
+
+@Override
     public String toString() {
         return "\nFamily: " + this.family + "\nName: " + this.name + "\nAge: " + this.age + "\nIs Mammal: " + this.isMammal;
     }

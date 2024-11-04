@@ -1,23 +1,33 @@
 package classes;
 
 public class Zoo {
-    /*
-    public Animal[] animals;
-    public String name;
-    public String city;
-    public final int nbrCages = 25;
-    public int nbrAnimals;
-*/
     private Animal[] animals;
+    private Aquatic[] aquaticAnimals;
     private String name ;
     private String city;
     private final int nbrCages = 25 ;
+    private final int nbrAquatics = 10 ;
     private int nbrAnimals ;
+    private int nbrCurrentAquatics;
+
+
     public Zoo(String name, String city) {
         this.name = name;
         this.city = city;
         this.animals = new Animal[this.nbrCages];
         this.nbrAnimals = 0;
+        this.aquaticAnimals = new Aquatic[this.nbrAquatics];
+    }
+    public Animal[] getAnimals() {
+        return animals;
+    }
+
+    public void setAquaticAnimals(Aquatic[] aquaticAnimals) {
+        this.aquaticAnimals = aquaticAnimals;
+    }
+
+    public void setAnimals(Animal[] animals) {
+        this.animals = animals;
     }
 
     public void displayZoo() {
@@ -26,12 +36,17 @@ public class Zoo {
         System.out.println("Nbr Cages: " + this.nbrCages);
     }
 
+    @Override
     public String toString() {
         String msg = "\nName: " + this.name + "\nCity: " + this.city + "\nNbr Cages: " + this.nbrCages + "\nAnimals:";
         for (int i = 0; i < this.nbrAnimals; i++) {
             msg += "\n" + (i + 1) + ". " + this.animals[i].toString();
         }
         return msg;
+    }
+
+    public Aquatic[] getAquaticAnimals() {
+        return this.aquaticAnimals;
     }
 
     public int searchAnimal(String animalName) {
@@ -68,6 +83,7 @@ public class Zoo {
     }
 
 */
+/*
 public boolean addAnimal(Animal animal) {
     if (this.isZooFull()) {
         System.out.println("No more additions allowed!");
@@ -81,7 +97,22 @@ public boolean addAnimal(Animal animal) {
         System.out.println("Animal added");
         return true;
     }
-}
+}*/
+
+
+    public void addAnimal(Animal animal) throws addexep{
+
+            if (this.isZooFull()) {
+            throw new addexep("Zoo is full");
+            }
+                this.animals[this.nbrAnimals] = animal;
+                this.nbrAnimals++;
+                System.out.println("Animal added" + nbrAnimals + ".");
+
+
+
+    }
+
     public boolean removeAnimal(Animal animal) {
         int index = this.searchAnimal(animal.getName());
         if (index == -1) {
@@ -117,4 +148,52 @@ public boolean addAnimal(Animal animal) {
             return null;
         }
     }
-}
+       public void addAquaticAnimal(Aquatic aquatic) {
+           if (this.nbrCurrentAquatics >= this.nbrAquatics) {
+               System.out.println("No more additions allowed!");
+           } else {
+               this.aquaticAnimals[this.nbrCurrentAquatics] = aquatic;
+               this.nbrCurrentAquatics++;
+               System.out.println("Aquatic animal added");
+           }
+       }
+       /*
+        public void swim()
+           {
+               for(int i = 0; i < this.nbrAquatics; i++) {
+                   this.aquaticAnimals[i].swim();
+               }
+           }
+
+        */
+    public float maxPenguinSwimmingDepth() {
+        float maxDepth = -1; // Initialiser à une valeur négative pour commencer
+
+        // Parcourir les animaux aquatiques
+        for (int i = 0; i < this.aquaticAnimals.length; i++) {
+            if (this.aquaticAnimals[i] instanceof Penguin) {
+                Penguin penguin = (Penguin) this.aquaticAnimals[i];
+                float depth = penguin.getSwimmingDepth();
+                if (depth > maxDepth) {
+                    maxDepth = depth;
+                }
+            }
+        }
+
+        return maxDepth;
+    }
+    public void displayNumberOfAquaticsByType()
+    {
+        int a=0;
+        int b=0;
+        for (int i = 0; i < this.aquaticAnimals.length; i++)
+        {
+            if(this.aquaticAnimals[i] instanceof Penguin)
+            {
+                a++ ;
+            } else if (this.aquaticAnimals[i] instanceof Dolphin) {
+                b++ ;
+            }
+        }
+    }
+    }
