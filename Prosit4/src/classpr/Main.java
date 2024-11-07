@@ -1,6 +1,8 @@
 package classpr;
 
 import classes.*;
+import enumm.Food;
+import interfacee.*;
 
 public class Main {
     public static void main(String[] args)  {
@@ -35,11 +37,13 @@ public class Main {
         Animal giraffe = null;
         Animal monkey = null;
         Animal tiger = null;
+        Aquatic DOL = null;
 
         try {
 
+             DOL = new Dolphin("a","b" , 1 , false , "xx" , 0,0) ;
 
-             lion = new Animal("cats", "lion", 3, true);
+            lion = new Animal("cats", "lion", 3, true);
             zebra = new Animal("zebra", "zebra", 3, true);
             elephant = new Animal("elephant", "elephant", 3, true);
             giraffe = new Animal("giraffe", "giraffe", 3, true);
@@ -50,7 +54,6 @@ public class Main {
         catch (exep e) {
             System.out.println(e.getMessage());
         }
-
 
         Zoo myZoo = new Zoo("Belvedere", "Tunis");
         Zoo myZoo1 = new Zoo("Frigya", "Bouficha");
@@ -98,5 +101,9 @@ try {
        // aqua.swim();
         dol.swim();
         pen.swim();
+        terr.eatMeat(Food.MEAT);
+        terr.eatPlant(Food.PLANT);
+        terr.eatPlantAndMeat(Food.MEAT);
+        DOL.eatMeat(Food.MEAT);
     }
 }
