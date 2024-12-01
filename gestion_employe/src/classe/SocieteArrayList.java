@@ -7,7 +7,7 @@ import java.util.Comparator;
 
 
 public class SocieteArrayList implements lGestion<Employe> {
-    private ArrayList <Employe> employees;
+    private ArrayList <Employe> employees = new ArrayList<>();
 
     @Override
     public void ajouterEmploye(Employe e)  {

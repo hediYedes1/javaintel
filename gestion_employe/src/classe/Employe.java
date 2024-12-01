@@ -50,7 +50,7 @@ public class Employe implements Comparable<Employe> {
 
 
 
-    Employe(int identifiant, String nom, String prenom, String nomDeDepartement, int grade) {
+    public Employe(int identifiant, String nom, String prenom, String nomDeDepartement, int grade) {
         this.identifiant = identifiant;
         this.nom = nom;
         this.prenom = prenom;
@@ -81,5 +81,7 @@ public class Employe implements Comparable<Employe> {
     public int compareTo(Employe o) {
         return Integer.compare(this.getIdentifiant(), o.getIdentifiant());
     }
+
+
 
 }
