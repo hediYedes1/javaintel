@@ -5,6 +5,11 @@ public final class Service extends Prestation
     private int nombre_heures ;
     private int prix_heures ;
 
+    public Service(int a, String b , String c) {
+        super(a,b,c);
+
+    }
+
     public int getNombre_heures() {
         return nombre_heures;
     }
@@ -35,4 +40,6 @@ public final class Service extends Prestation
 
                 ;
     }
+
+
 }
